@@ -12,6 +12,11 @@ Springmvc集成Swagger2
 https://blog.csdn.net/weixin_38501485/article/details/80704761
 https://blog.csdn.net/u010827436/article/details/45872981
 
+
+问题：@EnableAspectJAutoProxy not work with proxyTargetClass=true
+https://stackoverflow.com/questions/6253974/aspectj-why-advice-defined-in-xyz-has-not-been-applied
+https://bugs.eclipse.org/bugs/show_bug.cgi?id=149261#c11
+
 后续：
 --读写分离
 
