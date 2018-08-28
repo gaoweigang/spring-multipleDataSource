@@ -6,22 +6,32 @@ import com.gwg.shiro.web.config.mvc.WebConfig;
 import com.gwg.shiro.web.dto.RoleDto;
 import com.gwg.shiro.web.exception.BusinessException;
 import com.gwg.shiro.web.model.Role;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = {WebConfig.class})
 public class RoleServiceTest {
 
     private static final Logger logger = LoggerFactory.getLogger(RoleServiceTest.class);
 
     @Autowired
     private RoleService roleService;
+
+    /**
+     * 每个测试方法执行之前执行一次
+     */
+    @Before
+    public void before(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        roleService = applicationContext.getBean(RoleService.class);
+    }
 
     @Test
     public void testAddRole() throws BusinessException {

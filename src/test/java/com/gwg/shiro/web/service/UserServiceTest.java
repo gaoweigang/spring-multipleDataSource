@@ -4,9 +4,15 @@ import com.gwg.shiro.web.config.mvc.RootConfig;
 import com.gwg.shiro.web.config.mvc.WebConfig;
 import com.gwg.shiro.web.dto.UserDto;
 import com.gwg.shiro.web.exception.BusinessException;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,19 +20,27 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {RootConfig.class, WebConfig.class})
 public class UserServiceTest {
 
-    @Autowired
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceTest.class);
+
     private UserService userService;
+
+    /**
+     * 每个测试方法执行之前执行一次
+     */
+    @Before
+    public void before(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RootConfig.class);
+        userService = applicationContext.getBean(UserService.class);
+    }
 
 
     @Test
     public void testAddUser() throws BusinessException {
 
         UserDto dto = new UserDto();
-        dto.setUserId("13817191469");
+        dto.setUserId("13817191471");
         dto.setUsername("高伟刚");
         dto.setCardNo("420881199101095174");
         dto.setEmail("13817191469@163.com");
@@ -42,7 +56,7 @@ public class UserServiceTest {
     public void testQueryUserInfoById() throws BusinessException{
 
         UserDto dto = new UserDto();
-        dto.setUserId("13817191469");
+        dto.setId(23L);
 
         userService.queryUserInfoById(dto);
     }

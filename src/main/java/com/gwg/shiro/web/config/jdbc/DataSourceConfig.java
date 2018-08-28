@@ -22,6 +22,11 @@ import java.util.Map;
  *
  */
 @Configuration
+/**
+ * 启用Spring Aop事物管理
+ * 等价于
+ * <tx:annotation-driven />
+ */
 @EnableTransactionManagement //启用Spring Aop事物管理,启用之后就可以使用@Transactional注解了
 public class DataSourceConfig{
 
