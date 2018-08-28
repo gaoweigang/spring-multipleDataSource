@@ -17,4 +17,6 @@ https://blog.csdn.net/u010827436/article/details/45872981
 
 --如何将主库的数据同步到从库
 
+--mybatis插入之后返回记录id
+
 
