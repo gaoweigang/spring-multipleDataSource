@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="shiro-web-session-sharing-spring" />
-        <module name="shiro-web-session-sharing-spring-two" />
-        <module name="spring-multipleDataSource" />
+        <module name="spring-multipleDataSource-baseOnAnnotation" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="spring-multipleDataSource" target="1.8" />
+      <module name="spring-multipleDataSource-baseOnAnnotation" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

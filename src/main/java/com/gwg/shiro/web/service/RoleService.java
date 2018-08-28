@@ -1,6 +1,5 @@
 package com.gwg.shiro.web.service;
 
-import com.github.pagehelper.PageInfo;
 import com.gwg.shiro.web.dto.RoleDto;
 import com.gwg.shiro.web.exception.BusinessException;
 import com.gwg.shiro.web.model.Role;

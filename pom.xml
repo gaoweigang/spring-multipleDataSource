@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.gwg.shiro</groupId>
-    <artifactId>spring-multipleDataSource</artifactId>
+    <artifactId>spring-multipleDataSource-baseOnAnnotation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
@@ -132,12 +132,12 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.4.0</version>
+            <version>2.7.0</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.4.0</version>
+            <version>2.7.0</version>
         </dependency>
         <!-- swagger-->
         <!--springfox-swagger2已经依赖的swagger-annotations，因此在这里可以注释掉-->

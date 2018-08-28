@@ -1,5 +1,7 @@
 package com.gwg.shiro.web.service;
 
+import com.gwg.shiro.web.config.mvc.RootConfig;
+import com.gwg.shiro.web.config.mvc.WebConfig;
 import com.gwg.shiro.web.dto.UserDto;
 import com.gwg.shiro.web.exception.BusinessException;
 import org.junit.Test;
@@ -13,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/spring-config.xml")
+@ContextConfiguration(classes = {RootConfig.class, WebConfig.class})
 public class UserServiceTest {
 
     @Autowired

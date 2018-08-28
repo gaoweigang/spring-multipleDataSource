@@ -1,8 +1,8 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="spring-multipleDataSource:war">
+  <artifact type="war" name="spring-multipleDataSource-baseOnAnnotation:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <root id="archive" name="spring-multipleDataSource.war">
-      <element id="artifact" artifact-name="spring-multipleDataSource:war exploded" />
+      <element id="artifact" artifact-name="spring-multipleDataSource-baseOnAnnotation:war exploded" />
     </root>
   </artifact>
 </component>

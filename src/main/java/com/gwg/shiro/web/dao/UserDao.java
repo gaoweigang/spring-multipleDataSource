@@ -4,7 +4,6 @@ import com.github.pagehelper.PageInfo;
 import com.gwg.shiro.web.dto.UserDto;
 import com.gwg.shiro.web.exception.BusinessException;
 import com.gwg.shiro.web.model.User;
-import com.gwg.shiro.web.vo.UserVo;
 
 public interface UserDao {
 

@@ -1,6 +1,8 @@
 package com.gwg.shiro.web.service;
 
 import com.alibaba.fastjson.JSON;
+import com.gwg.shiro.web.config.mvc.RootConfig;
+import com.gwg.shiro.web.config.mvc.WebConfig;
 import com.gwg.shiro.web.dto.RoleDto;
 import com.gwg.shiro.web.exception.BusinessException;
 import com.gwg.shiro.web.model.Role;
@@ -13,7 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/spring-config.xml")
+//@ContextConfiguration(classes = {WebConfig.class})
 public class RoleServiceTest {
 
     private static final Logger logger = LoggerFactory.getLogger(RoleServiceTest.class);
