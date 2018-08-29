@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 @Component // for auto scan
 @Order(0) // execute before @Transactional
 /**
- * 启用AOP,指示是否要创建基于子类的（CGLIB）代理，而不是标准的基于Java接口的代理权。
+ * 启用AOP,AOP实现方式有两种，一种是使用基于子类的CGLIB,另一种基于Java接口的Java动态代理，指示是否要创建基于子类的（CGLIB）代理，而不是标准的基于Java接口的代理权。
  * 等价于
  * 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
  */
-@EnableAspectJAutoProxy(proxyTargetClass = true)//启用基于AOP,启用后就可以使用@Aspect, @Pointcut等注解了
+@EnableAspectJAutoProxy(proxyTargetClass = true)//启用AOP,使用基于子类的CGLIB,启用后就可以使用@Aspect, @Pointcut等注解了
 public class MultipleDataSourceAspectAdvice {
 
     private static Logger logger = LoggerFactory.getLogger(MultipleDataSourceAspectAdvice.class);
