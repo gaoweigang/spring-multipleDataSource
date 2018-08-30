@@ -81,12 +81,12 @@
     <!-- <logger name="com.netflix" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE" />
     </logger> -->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="ASYNC_FILE" />
         <appender-ref ref="ASYNC_ERROR_FILE" />
         <appender-ref ref="ERROR_FILE" />
     </root>
     <!--输出sql-->
-    <logger name="com.gwg" level="INFO"></logger>
+    <logger name="com.gwg" level="DEBUG"></logger>
 </configuration>
