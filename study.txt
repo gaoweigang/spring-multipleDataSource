@@ -18,6 +18,9 @@ java -classpath "%JAVA_HOME%/lib/sa-jdi.jar" sun.jvm.hotspot.HSDB
 在使用基于CGLIB的方式实现AOP的时候，出现如下警告并不影响，该警告并不影响AOP的实现
 Warning:ajc: advice defined in com.gwg.shiro.web.config.jdbc.MultipleDataSourceAspectAdvice has not been applied [Xlint:adviceDidNotMatch]
 
+该设置用于输出cglib动态代理产生的类
+DebuggingClassWriter.DEBUG_LOCATION_PROPERTY = E:/class
+
 navigated to advised methods
 后续：
 --读写分离
