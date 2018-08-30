@@ -12,16 +12,20 @@ Springmvc集成Swagger2
 https://blog.csdn.net/weixin_38501485/article/details/80704761
 https://blog.csdn.net/u010827436/article/details/45872981
 
+查看内容的class
+java -classpath "%JAVA_HOME%/lib/sa-jdi.jar" sun.jvm.hotspot.HSDB
 
-问题：@EnableAspectJAutoProxy not work with proxyTargetClass=true
-https://stackoverflow.com/questions/6253974/aspectj-why-advice-defined-in-xyz-has-not-been-applied
-https://bugs.eclipse.org/bugs/show_bug.cgi?id=149261#c11
+在使用基于CGLIB的方式实现AOP的时候，出现如下警告并不影响，该警告并不影响AOP的实现
+Warning:ajc: advice defined in com.gwg.shiro.web.config.jdbc.MultipleDataSourceAspectAdvice has not been applied [Xlint:adviceDidNotMatch]
 
+navigated to advised methods
 后续：
 --读写分离
 
 --如何将主库的数据同步到从库
 
 --mybatis插入之后返回记录id
+
+--springboot单元测试后，自动回滚数据
 
 
