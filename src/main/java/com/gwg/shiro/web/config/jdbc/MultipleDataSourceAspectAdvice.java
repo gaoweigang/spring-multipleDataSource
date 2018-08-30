@@ -15,11 +15,14 @@ import org.springframework.stereotype.Component;
  */
 @Aspect // for aop
 @Component // for auto scan
-@Order(0) // execute before @Transactional
+@Order(Integer.MIN_VALUE) // execute before @Transactional
 /**
  * 启用AOP,AOP实现方式有两种，一种是使用基于子类的CGLIB,另一种基于Java接口的Java动态代理，指示是否要创建基于子类的（CGLIB）代理，而不是标准的基于Java接口的代理权。
  * 等价于
  * 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+ *
+ *  经过测试：proxyTargetClass配置项没具体作用？，如果是使用javac编译器，则会使用Java动态代理，
+ *           如果使用的是Ajc编译器，则会使用CGLIB方式生成代理对象
  */
 @EnableAspectJAutoProxy(proxyTargetClass = true)//启用AOP,使用基于子类的CGLIB,启用后就可以使用@Aspect, @Pointcut等注解了
 public class MultipleDataSourceAspectAdvice {
@@ -31,7 +34,7 @@ public class MultipleDataSourceAspectAdvice {
      * 切入点对连接点进行拦截的定义,该方法无方法体,主要为方便该类中其他方法使用此处配置的切入点,该方法体内容不会执行
      * 说明：包com.gwg.shiro.web.mapper中所有的类已select为前缀的方法
      */
-    @Pointcut("execution(public * com.gwg.shiro.web.mapper.*.insert*(..))")
+    @Pointcut("execution(public * com.gwg.shiro.web.dao.impl.*.add*(..))")
     public void writeMethod() {
     };
 
@@ -39,7 +42,7 @@ public class MultipleDataSourceAspectAdvice {
      *切入点对连接点进行拦截的定义,该方法无方法体,主要为方便该类中其他方法使用此处配置的切入点。该方法体内容不会执行
      * 说明：包com.gwg.shiro.web.mapper中所有的类已select为前缀的方法
      */
-    @Pointcut("execution(public * com.gwg.shiro.web.mapper.*.select*(..))")
+    @Pointcut("execution(public * com.gwg.shiro.web.dao.impl.*.query*(..))")
     public void readMethod() {
     };
 
