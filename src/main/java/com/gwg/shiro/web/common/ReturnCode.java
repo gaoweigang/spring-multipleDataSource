@@ -20,11 +20,9 @@ public enum ReturnCode {
 	UNAUTH("无权访问该功能", "3000");
 
 
-	@Setter
-	@Getter
+
 	private String message;
-	@Setter
-	@Getter
+
 	private String code;
 
 	private ReturnCode(String message, String code) {
@@ -32,12 +30,19 @@ public enum ReturnCode {
 		this.code = code;
 	}
 
-	public static String getMessage(String code) {
-		for (ReturnCode c : ReturnCode.values()) {
-			if (c.getCode().equals(code)) {
-				return c.message;
-			}
-		}
-		return null;
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 }
