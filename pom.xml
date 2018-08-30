@@ -7,12 +7,13 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring.version>4.3.7.RELEASE</spring.version>
+        <spring.version>4.3.13.RELEASE</spring.version>
         <mysql.version>5.1.46</mysql.version>
         <jackson.core.version>1.9.13</jackson.core.version>
         <jackson.mapper.version>1.9.13</jackson.mapper.version>
         <jackson-databind.version>2.6.3</jackson-databind.version>
         <jackson-core.version>2.6.3</jackson-core.version>
+        <aspectj.version>1.9.1</aspectj.version>
     </properties>
 
     <dependencies>
@@ -210,6 +211,13 @@
             <version>1.1.7</version>
         </dependency>
 
+        <!--aopalliance-->
+        <!--<dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
+        </dependency>
+-->
         <!--mybatis自动生成实体代码的插件 -->
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -222,13 +230,61 @@
     <build>
         <finalName>spring-multipleDataSource</finalName>
         <plugins>
-            <plugin>
+            <!--maven编译插件，使用javac来进行编译工程，也就是说当使用maven来编译的时候，会使用javac编译器来编译项目-->
+            <!--<plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>
+            </plugin>-->
+            <!--maven编译插件，使用Ajc来进行编译工程，也就是说当使用maven来编译的时候，会使用Ajc编译器来编译项目。
+            如果想使Spring项目使用基于CGLIB方式来实现代理，则需要指定织入时间
+            如果想使Spring项目使用基于Spring AOP的方式,即Java动态代理的方式实现代理，则需要这段配置
+              使用spring-aspects.jar 的aspectj, 需要指定编织时间, 使用编译时织入.aspectj 是静态织入的,
+              也就是编译期织入、类加载期织入(LTW), 编译期织入可以采用编辑器(maven, ant)等工具,
+              类加载器可以通过类加载器，在类字节码加载到JVM时，织入切面. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.11</version>
+                <dependencies>
+                    <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjtools</artifactId>
+                    <version>${aspectj.version}</version>
+                </dependency>
+            </dependencies>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                        <goal>test-compile</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <complianceLevel>1.8</complianceLevel>
+                <forceAjcCompile>true</forceAjcCompile>
+                <weaveDirectories>
+                    <weaveDirectory>${project.build.outputDirectory}</weaveDirectory>
+                </weaveDirectories>
+                <aspectLibraries>
+                    <aspectLibrary>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aspects</artifactId>
+                    </aspectLibrary>
+                </aspectLibraries>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+          </plugin>
+            <!--mybatis反向生成插件-->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
