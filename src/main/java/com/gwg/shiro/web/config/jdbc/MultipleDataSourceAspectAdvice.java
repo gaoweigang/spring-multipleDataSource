@@ -22,7 +22,8 @@ import org.springframework.stereotype.Component;
  * 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
  *
  *  经过测试：proxyTargetClass配置项没具体作用？，如果是使用javac编译器，则会使用Java动态代理，
- *           如果使用的是Ajc编译器，则会使用CGLIB方式生成代理对象
+ *           如果使用的是Ajc编译器，则会使用CGLIB方式生成代理对象,我觉得该配置项的作用在maven编译插件javac，Ajc并存的时候
+ *           指定使用具体的编译器
  */
 @EnableAspectJAutoProxy(proxyTargetClass = true)//启用AOP,使用基于子类的CGLIB,启用后就可以使用@Aspect, @Pointcut等注解了
 public class MultipleDataSourceAspectAdvice {
